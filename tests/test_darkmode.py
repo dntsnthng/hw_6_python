@@ -1,22 +1,18 @@
 from datetime import time
 
-
 def test_dark_theme_by_time():
     """
     Протестируйте правильность переключения темной темы на сайте в зависимости от времени
     """
     current_time = time(hour=23)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
-    if time(hour=6) <= current_time <= time(hour=22):
+
+    if 6 <= current_time.hour < 22:
         is_dark_theme = False
     else:
         is_dark_theme = True
 
-
     assert is_dark_theme is True
-
-
-
 
 def test_dark_theme_by_time_and_user_choice():
     """
@@ -27,25 +23,21 @@ def test_dark_theme_by_time_and_user_choice():
     dark_theme_enabled_by_user = None - Пользователь не сделал выбор (используется переключение по времени системы)
     """
     current_time = time(hour=16)
-    dark_theme_enabled_by_user = True
+    dark_theme_enabled_by_user = None
     # TODO переключите темную тему в зависимости от времени суток,
     #  но учтите что темная тема может быть включена вручную
 
     if dark_theme_enabled_by_user == None:
-        if time(hour=6) <= current_time <= time(hour=22):
-            is_dark_theme = False
+        if 6 <= current_time.hour < 22:
+            is_dark_theme = True
     else:
         if dark_theme_enabled_by_user == True:
             is_dark_theme = True
-        if dark_theme_enabled_by_user== False:
+        if dark_theme_enabled_by_user == False:
             is_dark_theme = False
 
 
-
-
-    #is_dark_theme = None
     assert is_dark_theme is True
-
 
 def test_find_suitable_user():
     """
@@ -65,8 +57,6 @@ def test_find_suitable_user():
             suitable_users = user
     assert suitable_users == {"name": "Olga", "age": 45}
 
-
-
     # TODO найдите всех пользователей младше 20 лет
 
     suitable_users = []
@@ -75,7 +65,7 @@ def test_find_suitable_user():
         if user['age'] < 20:
             list.append(suitable_users, user)
 
-        #suitable_users = None
+        # suitable_users = None
     assert suitable_users == [
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
@@ -91,7 +81,6 @@ def test_find_suitable_user():
 # сделать буквы заглавными (или первую букву), затем вывести значения всех аргументов этой функции:
 # >>> open_browser(browser_name="Chrome")
 # "Open Browser [Chrome]"
-
 
 
 def test_readable_function():
@@ -114,7 +103,7 @@ def open_browser(browser_name):
 
 
 def go_to_companyname_homepage(page_url):
-    actual_result =  print_name(go_to_companyname_homepage, page_url)
+    actual_result = print_name(go_to_companyname_homepage, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 
